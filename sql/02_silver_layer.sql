@@ -1,0 +1,25 @@
+CREATE OR REPLACE TABLE gft-data-pipeline.silver_layer.refined_ans_benef AS
+SELECT
+    ID_CMPT_MOVEL,
+    CAST(cd_operadora AS int64) AS id_operadora,
+    nm_razao_social AS razao_social,
+    NR_CNPJ AS CNPJ,
+    modalidade_operadora,
+    CAST(sg_uf AS STRING) AS UF,
+    CD_MUNICIPIO AS id_municipio,
+    NM_MUNICIPIO,
+    tp_sexo AS sexo,
+    de_faixa_etaria  AS faixa_etaria,
+    de_faixa_etaria_reaj as faixa_etaria_reaj,
+    cd_plano  as id_plano,
+    tp_vigencia_plano,
+    de_contratacao_plano as contratacao_plano, 
+    de_segmentacao_plano as segmentacao_plano,
+    de_abrg_geografica_plano as abrg_geografica_plano,
+    COBERTURA_ASSIST_PLAN,
+    TIPO_VINCULO,
+    cast(QT_BENEFICIARIO_ATIVO as int64) as QT_BENEFICIARIO_ATIVO,
+    cast(QT_BENEFICIARIO_ADERIDO as int64) as QT_BENEFICIARIO_ADERIDO,
+    cast(QT_BENEFICIARIO_CANCELADO as int64) as QT_BENEFICIARIO_CANCELADO,
+    cast(dt_carga as date) as dt_carga
+FROM gft-data-pipeline.bronze_layer.tab_ans_benef;
